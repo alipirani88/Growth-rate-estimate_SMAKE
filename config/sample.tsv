@@ -1,0 +1,3 @@
+sample_id,sample_name,Condition,TimePoint,Replicate,illumina_r1,illumina_r2
+HM68_TB1_T1,HM68,TB1,T1,a,HM68_TB1_T1_R1.fastq.gz,HM68_TB1_T1_R2.fastq.gz
+HM68_TB1-T2.5,HM68,TB1,T2.5,a,HM68_TB1-T2.5_R1.fastq.gz,HM68_TB1-T2.5_R2.fastq.gz
