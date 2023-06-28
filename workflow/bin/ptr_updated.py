@@ -13,6 +13,8 @@ def parser():
     required = parser.add_argument_group('Required arguments')
     required.add_argument('-bedfile', action='store', dest="bedfile", help='Coverage Bed file', required=True)
     required.add_argument('-outfile', action='store', dest="outfile", help='Smoothed Coverage Depth', required=True)
+    required.add_argument('-ori_coordinates', action='store', dest="ori_coordinates", help='Origin of Replication Loci coordinates', required=True)
+    required.add_argument('-ter_coordinates', action='store', dest="ter_coordinates", help='Termination of Replication Loci coordinates', required=True)
     return parser
 
 def generate_moving_sum_results(moving_sum_array, out_path):
@@ -52,9 +54,9 @@ def calculate_per_of_reads(median_sliding_window_array, bedfile):
     return out_file
 
 def generate_perc_coverage_graph(csv_matrix_file, ptr_value):
-    out_path = csv_matrix_file.replace('.bed_perc_bins.csv', '_perc_coverage_graph.R')
+    out_path = os.path.dirname(csv_matrix_file)
     header = os.path.basename(csv_matrix_file).replace('.csv', '')
-    with open(out_path, 'w') as out:
+    with open(out_path + "perc_coverage_graph.R", 'w') as out:
         print_string = "library(reshape)\nlibrary(ggplot2)\n"
         print_string = print_string + "dat=read.csv(\"%s\")\n" % (os.path.basename(csv_matrix_file))
         print_string = print_string + "mdf=melt(dat,id.vars=\"bin\")\n"
@@ -110,6 +112,8 @@ def smoothing(read_counts, window, out_path, bedfile):
         out.write(str(out_path) + ' Peak and trough values:\t' + str(peak) + '\t' + str(through) + '\n')
     out.close()
 
+
+
     with open(out_path, 'w') as out:
         header = "bin,count\n"
         count = 0
@@ -120,24 +124,19 @@ def smoothing(read_counts, window, out_path, bedfile):
 
     # ## Step 6
     perc_bins_matrix = calculate_per_of_reads(median_sliding_window_array, bedfile)
-    print(perc_bins_matrix)
+
     generate_perc_coverage_graph(perc_bins_matrix, PTR_median)
 
     return PTR_median
 
-
-
 # Main Method
-# The algorithm follows the procedure as described in this publication: Growth dynamics of gut microbiota in health and disease inferred from single metagenomic samples http://science.sciencemag.org/content/349/6252/1101.long with a few minor changes.
-# Input : Mapped reads
+# The algorithm follows the procedure as described in this publication: 
+# Growth dynamics of gut microbiota in health and disease inferred from single metagenomic samples http://science.sciencemag.org/content/349/6252/1101.long with a few minor changes.
+# Input : Mapped read depth bed file
 # Steps: Input
-# - The  mapped  reads in bedfile formatto  each  bacteria  was
-# summed  into  non-
-# overlap
-# ping  10Kbp  bins  for  display  purposes.  Alternatively,  we
-# employed  a  smoothing  filter,  comprised  of  a  moving  sum  with  window  size  of  10Kbp
-# and a slide of 100bp, followed by a moving median with window size of 10K bins and a
-# slide of a 100 bins.
+# Description: The  mapped  reads in bedfile format is summed  into  non-overlapping  10Kbp  bins  for  display  purposes.  
+# Alternatively,  a  smoothing  filter comprised  of  a  moving  sum  with  window  size  of  10Kbp
+# and a slide of 100bp, followed by a moving median with window size of 10K bins and a sliding window of 100 bins.
 def generate_PTR_dataframe(bedfile):
     out_file = bedfile.replace(".bed", "_bins.csv")
     window = 10000
@@ -148,7 +147,7 @@ def generate_PTR_dataframe(bedfile):
             line_split = line.split('\t')
             counts = int(line_split[2])
             read_counts.append(int(counts))
-    
+    print (read_counts)
     PTR_median = smoothing(read_counts, window, out_file, bedfile)
     
     # perc_bins_matrix = os.path.dirname(bedfile) + "/" + os.path.basename(bedfile)[0:20] + "_perc_bins.csv"

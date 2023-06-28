@@ -120,11 +120,11 @@ rule bedtools:
     shell:
         "bedtools genomecov -ibam {input.picard_bamout_sorted} -d > {output.bedfile}"
 
-rule estimate_PTR:
+rule Estimate_PTR:
     input:
         bedfile = lambda wildcards: expand(f"results/{wildcards.prefix}/ptr/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}.bed"),
     output:
-        coverage_bin = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}.bed_bins.csv",
+        coverage_bin = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}_bins.csv",
         coverage_perc_bin = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}.bed_perc_bins.csv",
     params:
         threads = config["ncores"],
