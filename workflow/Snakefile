@@ -29,6 +29,7 @@ rule all:
         #bamout_sorted = expand("results/{prefix}/bowtie/{condition}/{sample}/{sample}_sorted.bam", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
         #picard_bamout_sorted = expand("results/{prefix}/picard/{condition}/{sample}/{sample}_sorted.bam", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
         #bedfile = expand("results/{prefix}/bedtools/{condition}/{sample}/{sample}.bed", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        btindex = config["reference_path"] + f".1.bt2",
         coverage_perc_bin = expand("results/{prefix}/ptr/{condition}/{sample}/{sample}.bed_perc_bins.csv", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
 
 rule trimmomatic_pe:
@@ -61,11 +62,24 @@ rule trimmomatic_pe:
     shell:
         "trimmomatic PE {input.r1} {input.r2} {output.r1} {output.r1_unpaired} {output.r2} {output.r2_unpaired} -threads {params.threads} ILLUMINACLIP:{params.adapter_filepath}:{params.seed}:{params.palindrome_clip}:{params.simple_clip}:{params.minadapterlength}:{params.keep_both_reads} SLIDINGWINDOW:{params.window_size}:{params.window_size_quality} MINLEN:{params.minlength} HEADCROP:{params.headcrop_length} &>{log}"
 
+rule bowtie_index:
+    input:
+        reference = config["reference_path"],
+    output:
+        btindex = config["reference_path"] + f".1.bt2",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/bowtie.yaml"
+    shell:
+        "bowtie2-build {input.reference} {input.reference}"
+
 rule bowtie:
     input:
         r1 = lambda wildcards: expand(f"results/{wildcards.prefix}/trimmomatic/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_R1_paired.fastq.gz"),
         r2 = lambda wildcards: expand(f"results/{wildcards.prefix}/trimmomatic/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_R2_paired.fastq.gz"),
-
+        reference = config["reference_path"] + f".1.bt2",
     output:
         samout = f"results/{{prefix}}/bowtie/{{condition}}/{{sample}}/{{sample}}.sam",
     params:
@@ -75,7 +89,8 @@ rule bowtie:
     conda:
         "envs/bowtie.yaml"
     shell:
-        "bowtie2-build {params.reference} {params.reference} && bowtie2 -x {params.reference} -1 {input.r1} -2 {input.r2} -S {output.samout} -t -p 8 {params.alignment_settings}"
+        # bowtie2-build {params.reference} {params.reference} && 
+        "bowtie2 -x {params.reference} -1 {input.r1} -2 {input.r2} -S {output.samout} -t -p 8 {params.alignment_settings}"
 
 rule samtools:
     input:

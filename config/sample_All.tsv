@@ -3,14 +3,6 @@ GC_HU-HM86_3h,HM86,GC_HU,3h,a,GC_HU-HM86_3h_R1.fastq.gz,GC_HU-HM86_3h_R2.fastq.g
 GC_HU-HM86_4h,HM86,GC_HU,4h,a,GC_HU-HM86_4h_R1.fastq.gz,GC_HU-HM86_4h_R2.fastq.gz
 GC_HU-HM86_5h,HM86,GC_HU,5h,a,GC_HU-HM86_5h_R1.fastq.gz,GC_HU-HM86_5h_R2.fastq.gz
 GC_HU-HM86_6h,HM86,GC_HU,6h,a,GC_HU-HM86_6h_R1.fastq.gz,GC_HU-HM86_6h_R2.fastq.gz
-HM68_TB1_T1,HM68,TB1,T1,a,HM68_TB1_T1_R1.fastq.gz,HM68_TB1_T1_R2.fastq.gz
-HM68_TB1-T2.5,HM68,TB1,T2.5,a,HM68_TB1-T2.5_R1.fastq.gz,HM68_TB1-T2.5_R2.fastq.gz
-HM68_TB1-T2,HM68,TB1,T2,a,HM68_TB1-T2_R1.fastq.gz,HM68_TB1-T2_R2.fastq.gz
-HM68_TB1-T3,HM68,TB1,T3,a,HM68_TB1-T3_R1.fastq.gz,HM68_TB1-T3_R2.fastq.gz
-HM68_TB1-T4,HM68,TB1,T4,a,HM68_TB1-T4_R1.fastq.gz,HM68_TB1-T4_R2.fastq.gz
-HM68_TB1-T5,HM68,TB1,T5,a,HM68_TB1-T5_R1.fastq.gz,HM68_TB1-T5_R2.fastq.gz
-HM68_TB1_T_O-N,HM68,TB1,T_O-N,a,HM68_TB1_T_O-N_R1.fastq.gz,HM68_TB1_T_O-N_R2.fastq.gz
-HM86_HU_O-N,HM86,HU,O-N,a,HM86_HU_O-N_R1.fastq.gz,HM86_HU_O-N_R2.fastq.gz
 HM86_LB1-T1a,HM86,LB1,T1a,a,HM86_LB1-T1a_R1.fastq.gz,HM86_LB1-T1a_R2.fastq.gz
 HM86_LB1-T1b,HM86,LB1,T1b,b,HM86_LB1-T1b_R1.fastq.gz,HM86_LB1-T1b_R2.fastq.gz
 HM86_LB1-T2a,HM86,LB1,T2a,a,HM86_LB1-T2a_R1.fastq.gz,HM86_LB1-T2a_R2.fastq.gz
@@ -20,7 +12,6 @@ HM86_LB1-T3b,HM86,LB1,T3b,b,HM86_LB1-T3b_R1.fastq.gz,HM86_LB1-T3b_R2.fastq.gz
 HM86_LB1-T4,HM86,LB1,T4,a,HM86_LB1-T4_R1.fastq.gz,HM86_LB1-T4_R2.fastq.gz
 HM86_LB1-T5,HM86,LB1,T5,a,HM86_LB1-T5_R1.fastq.gz,HM86_LB1-T5_R2.fastq.gz
 HM86_LB1-T6,HM86,LB1,T6,a,HM86_LB1-T6_R1.fastq.gz,HM86_LB1-T6_R2.fastq.gz
-HM86_LB1-T_O-N,HM86,LB1,T_O-N,a,HM86_LB1-T_O-N_R1.fastq.gz,HM86_LB1-T_O-N_R2.fastq.gz
 HM86_LB2-T1a,HM86,LB2,T1a,a,HM86_LB2-T1a_R1.fastq.gz,HM86_LB2-T1a_R2.fastq.gz
 HM86_LB2-T1b,HM86,LB2,T1b,b,HM86_LB2-T1b_R1.fastq.gz,HM86_LB2-T1b_R2.fastq.gz
 HM86_LB2-T2a,HM86,LB2,T2a,a,HM86_LB2-T2a_R1.fastq.gz,HM86_LB2-T2a_R2.fastq.gz
@@ -30,7 +21,6 @@ HM86_LB2-T3b,HM86,LB2,T3b,b,HM86_LB2-T3b_R1.fastq.gz,HM86_LB2-T3b_R2.fastq.gz
 HM86_LB2-T4,HM86,LB2,T4,a,HM86_LB2-T4_R1.fastq.gz,HM86_LB2-T4_R2.fastq.gz
 HM86_LB2-T5,HM86,LB2,T5,a,HM86_LB2-T5_R1.fastq.gz,HM86_LB2-T5_R2.fastq.gz
 HM86_LB2-T6,HM86,LB2,T6,a,HM86_LB2-T6_R1.fastq.gz,HM86_LB2-T6_R2.fastq.gz
-HM86_LB2-T_O-N,HM86,LB2,T_O-N,a,HM86_LB2-T_O-N_R1.fastq.gz,HM86_LB2-T_O-N_R2.fastq.gz
 HM86_LB3-T1a,HM86,LB3,T1a,a,HM86_LB3-T1a_R1.fastq.gz,HM86_LB3-T1a_R2.fastq.gz
 HM86_LB3-T1b,HM86,LB3,T1b,b,HM86_LB3-T1b_R1.fastq.gz,HM86_LB3-T1b_R2.fastq.gz
 HM86_LB3-T2a,HM86,LB3,T2a,a,HM86_LB3-T2a_R1.fastq.gz,HM86_LB3-T2a_R2.fastq.gz
@@ -40,7 +30,6 @@ HM86_LB3-T3b,HM86,LB3,T3b,b,HM86_LB3-T3b_R1.fastq.gz,HM86_LB3-T3b_R2.fastq.gz
 HM86_LB3-T4,HM86,LB3,T4,a,HM86_LB3-T4_R1.fastq.gz,HM86_LB3-T4_R2.fastq.gz
 HM86_LB3-T5,HM86,LB3,T5,a,HM86_LB3-T5_R1.fastq.gz,HM86_LB3-T5_R2.fastq.gz
 HM86_LB3-T6,HM86,LB3,T6,a,HM86_LB3-T6_R1.fastq.gz,HM86_LB3-T6_R2.fastq.gz
-HM86_LB3-T_O-N,HM86,LB3,T_O-N,a,HM86_LB3-T_O-N_R1.fastq.gz,HM86_LB3-T_O-N_R2.fastq.gz
 HM86_M9Glu1-2.5h,HM86,M9Glu1,2.5h,a,HM86_M9Glu1-2.5h_R1.fastq.gz,HM86_M9Glu1-2.5h_R2.fastq.gz
 HM86_M9Glu1-3.5h,HM86,M9Glu1,3.5h,a,HM86_M9Glu1-3.5h_R1.fastq.gz,HM86_M9Glu1-3.5h_R2.fastq.gz
 HM86_M9Glu1-4h,HM86,M9Glu1,4h,a,HM86_M9Glu1-4h_R1.fastq.gz,HM86_M9Glu1-4h_R2.fastq.gz
@@ -48,7 +37,6 @@ HM86_M9Glu1-5h,HM86,M9Glu1,5h,a,HM86_M9Glu1-5h_R1.fastq.gz,HM86_M9Glu1-5h_R2.fas
 HM86_M9Glu1-6h,HM86,M9Glu1,6h,a,HM86_M9Glu1-6h_R1.fastq.gz,HM86_M9Glu1-6h_R2.fastq.gz
 HM86_M9Glu1-7h,HM86,M9Glu1,7h,a,HM86_M9Glu1-7h_R1.fastq.gz,HM86_M9Glu1-7h_R2.fastq.gz
 HM86_M9Glu1-8h,HM86,M9Glu1,8h,a,HM86_M9Glu1-8h_R1.fastq.gz,HM86_M9Glu1-8h_R2.fastq.gz
-HM86_M9Glu1-_O-N,HM86,M9Glu1,T_O-N,a,HM86_M9Glu1-_O-N_R1.fastq.gz,HM86_M9Glu1-_O-N_R2.fastq.gz
 HM86_TB1-T1a,HM86,TB1,T1a,a,HM86_TB1-T1a_R1.fastq.gz,HM86_TB1-T1a_R2.fastq.gz
 HM86_TB1-T1b,HM86,TB1,T1b,b,HM86_TB1-T1b_R1.fastq.gz,HM86_TB1-T1b_R2.fastq.gz
 HM86_TB1-T2a,HM86,TB1,T2a,a,HM86_TB1-T2a_R1.fastq.gz,HM86_TB1-T2a_R2.fastq.gz
@@ -58,7 +46,6 @@ HM86_TB1-T3b,HM86,TB1,T3b,b,HM86_TB1-T3b_R1.fastq.gz,HM86_TB1-T3b_R2.fastq.gz
 HM86_TB1-T4,HM86,TB1,T4,a,HM86_TB1-T4_R1.fastq.gz,HM86_TB1-T4_R2.fastq.gz
 HM86_TB1-T5,HM86,TB1,T5,a,HM86_TB1-T5_R1.fastq.gz,HM86_TB1-T5_R2.fastq.gz
 HM86_TB1-T6,HM86,TB1,T6,a,HM86_TB1-T6_R1.fastq.gz,HM86_TB1-T6_R2.fastq.gz
-HM86_TB1-T_O-N,HM86,TB1,T_O-N,a,HM86_TB1-T_O-N_R1.fastq.gz,HM86_TB1-T_O-N_R2.fastq.gz
 HM86_TB2-T1a,HM86,TB2,T1a,a,HM86_TB2-T1a_R1.fastq.gz,HM86_TB2-T1a_R2.fastq.gz
 HM86_TB2-T1b,HM86,TB2,T1b,b,HM86_TB2-T1b_R1.fastq.gz,HM86_TB2-T1b_R2.fastq.gz
 HM86_TB2-T2a,HM86,TB2,T2a,a,HM86_TB2-T2a_R1.fastq.gz,HM86_TB2-T2a_R2.fastq.gz
@@ -68,7 +55,6 @@ HM86_TB2-T3b,HM86,TB2,T3b,b,HM86_TB2-T3b_R1.fastq.gz,HM86_TB2-T3b_R2.fastq.gz
 HM86_TB2-T4,HM86,TB2,T4,a,HM86_TB2-T4_R1.fastq.gz,HM86_TB2-T4_R2.fastq.gz
 HM86_TB2-T5,HM86,TB2,T5,a,HM86_TB2-T5_R1.fastq.gz,HM86_TB2-T5_R2.fastq.gz
 HM86_TB2-T6,HM86,TB2,T6,a,HM86_TB2-T6_R1.fastq.gz,HM86_TB2-T6_R2.fastq.gz
-HM86_TB2-T_O-N,HM86,TB2,T_O-N,a,HM86_TB2-T_O-N_R1.fastq.gz,HM86_TB2-T_O-N_R2.fastq.gz
 HM86_TB3-T1a,HM86,TB3,T1a,a,HM86_TB3-T1a_R1.fastq.gz,HM86_TB3-T1a_R2.fastq.gz
 HM86_TB3-T1b,HM86,TB3,T1b,b,HM86_TB3-T1b_R1.fastq.gz,HM86_TB3-T1b_R2.fastq.gz
 HM86_TB3-T2a,HM86,TB3,T2a,a,HM86_TB3-T2a_R1.fastq.gz,HM86_TB3-T2a_R2.fastq.gz
@@ -78,13 +64,11 @@ HM86_TB3-T3b,HM86,TB3,T3b,b,HM86_TB3-T3b_R1.fastq.gz,HM86_TB3-T3b_R2.fastq.gz
 HM86_TB3-T4,HM86,TB3,T4,a,HM86_TB3-T4_R1.fastq.gz,HM86_TB3-T4_R2.fastq.gz
 HM86_TB3-T5,HM86,TB3,T5,a,HM86_TB3-T5_R1.fastq.gz,HM86_TB3-T5_R2.fastq.gz
 HM86_TB3-T6,HM86,TB3,T6,a,HM86_TB3-T6_R1.fastq.gz,HM86_TB3-T6_R2.fastq.gz
-HM86_TB3-T_O-N,HM86,TB3,T_O-N,a,HM86_TB3-T_O-N_R1.fastq.gz,HM86_TB3-T_O-N_R2.fastq.gz
 Stab_HM86_TB2h,HM86,Stab-TB,2h,a,Stab_HM86_TB2h_R1.fastq.gz,Stab_HM86_TB2h_R2.fastq.gz
 Stab_HM86_TB3h,HM86,Stab-TB,3h,a,Stab_HM86_TB3h_R1.fastq.gz,Stab_HM86_TB3h_R2.fastq.gz
 Stab_HM86_TB4h,HM86,Stab-TB,4h,a,Stab_HM86_TB4h_R1.fastq.gz,Stab_HM86_TB4h_R2.fastq.gz
 Stab_HM86_TB5h,HM86,Stab-TB,5h,a,Stab_HM86_TB5h_R1.fastq.gz,Stab_HM86_TB5h_R2.fastq.gz
 Stab_HM86_TB6h,HM86,Stab-TB,6h,a,Stab_HM86_TB6h_R1.fastq.gz,Stab_HM86_TB6h_R2.fastq.gz
-Stab_HM86_Tb_O-N,HM86,Stab-TB,T_O-N,a,Stab_HM86_Tb_O-N_R1.fastq.gz,Stab_HM86_Tb_O-N_R2.fastq.gz
 Stab_HU-HM86_2h_R1,HM86,Stab-HU,2h,a,Stab_HU-HM86_2h_R1_R1.fastq.gz,Stab_HU-HM86_2h_R1_R2.fastq.gz
 Stab_HU-HM86_2h_R2,HM86,Stab-HU,2h,b,Stab_HU-HM86_2h_R2_R1.fastq.gz,Stab_HU-HM86_2h_R2_R2.fastq.gz
 Stab_HU-HM86_3h_R1,HM86,Stab-HU,3h,a,Stab_HU-HM86_3h_R1_R1.fastq.gz,Stab_HU-HM86_3h_R1_R2.fastq.gz

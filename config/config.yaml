@@ -12,7 +12,7 @@ ncores: 4
 threads: 12
 
 # Reference Genome Settings
-reference_path: resources/HM68/HM68.fasta
+reference_path: resources/HM86/HM86.fasta
 
 # Command line parameters for rule trimmomatic_pe
 adapter_file: config/adapters/NexteraPE-PE.fa

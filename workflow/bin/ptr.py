@@ -40,7 +40,7 @@ def calculate_per_of_reads(median_sliding_window_array, bedfile):
     out = out.strip()
     out_split = str(out.decode('ascii')).split(' ')
     mapped_reads = out_split[0]
-    out_file = os.path.dirname(bedfile) + "/" + os.path.basename(bedfile)[0:20] + "_perc_bins.csv"
+    out_file = os.path.dirname(bedfile) + "/" + os.path.basename(bedfile)[0:25] + "_perc_bins.csv"
     with open(out_file, 'w') as out:
         header = "bin,count\n"
         count = 0
