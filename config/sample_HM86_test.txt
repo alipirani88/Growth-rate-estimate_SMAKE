@@ -1,0 +1,10 @@
+sample_id,sample_name,Condition,TimePoint,Replicate,illumina_r1,illumina_r2
+GC_HU-HM86_3h,HM86,GC_HU,3h,a,GC_HU-HM86_3h_R1.fastq.gz,GC_HU-HM86_3h_R2.fastq.gz
+GC_HU-HM86_4h,HM86,GC_HU,4h,a,GC_HU-HM86_4h_R1.fastq.gz,GC_HU-HM86_4h_R2.fastq.gz
+GC_HU-HM86_5h,HM86,GC_HU,5h,a,GC_HU-HM86_5h_R1.fastq.gz,GC_HU-HM86_5h_R2.fastq.gz
+GC_HU-HM86_6h,HM86,GC_HU,6h,a,GC_HU-HM86_6h_R1.fastq.gz,GC_HU-HM86_6h_R2.fastq.gz
+HM86_HU_O-N,HM86,HU,O-N,a,HM86_HU_O-N_R1.fastq.gz,HM86_HU_O-N_R2.fastq.gz
+HM86_LB1-T1a,HM86,LB1,T1a,a,HM86_LB1-T1a_R1.fastq.gz,HM86_LB1-T1a_R2.fastq.gz
+HM86_LB1-T1b,HM86,LB1,T1b,b,HM86_LB1-T1b_R1.fastq.gz,HM86_LB1-T1b_R2.fastq.gz
+HM86_LB1-T2a,HM86,LB1,T2a,a,HM86_LB1-T2a_R1.fastq.gz,HM86_LB1-T2a_R2.fastq.gz
+HM86_LB1-T2b,HM86,LB1,T2b,b,HM86_LB1-T2b_R1.fastq.gz,HM86_LB1-T2b_R2.fastq.gz

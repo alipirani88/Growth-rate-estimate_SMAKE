@@ -1,0 +1,8 @@
+sample_id,sample_name,Condition,TimePoint,Replicate,illumina_r1,illumina_r2
+HM68_TB1_T1,HM68,TB1,T1,a,HM68_TB1_T1_R1.fastq.gz,HM68_TB1_T1_R2.fastq.gz
+HM68_TB1-T2.5,HM68,TB1,T2.5,a,HM68_TB1-T2.5_R1.fastq.gz,HM68_TB1-T2.5_R2.fastq.gz
+HM68_TB1-T2,HM68,TB1,T2,a,HM68_TB1-T2_R1.fastq.gz,HM68_TB1-T2_R2.fastq.gz
+HM68_TB1-T3,HM68,TB1,T3,a,HM68_TB1-T3_R1.fastq.gz,HM68_TB1-T3_R2.fastq.gz
+HM68_TB1-T4,HM68,TB1,T4,a,HM68_TB1-T4_R1.fastq.gz,HM68_TB1-T4_R2.fastq.gz
+HM68_TB1-T5,HM68,TB1,T5,a,HM68_TB1-T5_R1.fastq.gz,HM68_TB1-T5_R2.fastq.gz
+HM68_TB1_T_O-N,HM68,TB1,T_O-N,a,HM68_TB1_T_O-N_R1.fastq.gz,HM68_TB1_T_O-N_R2.fastq.gz

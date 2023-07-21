@@ -28,3 +28,13 @@ headcrop_length: 0
 
 
 bowtie2_alignment_settings: "-k 1 --non-deterministic --end-to-end --reorder --score-min L,0,0"
+<<<<<<< HEAD
+
+#OriC_coordinates: 4447821,4447984
+#ter_coordinates: 1870557,1870700
+
+OriC_coordinates: 687556,687719
+ter_coordinates: 3192852,3192995
+
+=======
+>>>>>>> 3f396bd5ab6983f5b869e37ede7d8f89b5564623
