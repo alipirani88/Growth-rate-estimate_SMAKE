@@ -6,4 +6,4 @@ The pipeline follows the coverage smoothing algorithm as described in the public
 
 [Growth dynamics of gut microbiota in health and disease inferred from single metagenomic samples](http://science.sciencemag.org/content/349/6252/1101.long)
 
-![Alt text](./dag.png)
+![Alt text](./plots/dag.png)

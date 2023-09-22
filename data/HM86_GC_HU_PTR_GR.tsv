@@ -1,0 +1,5 @@
+sample_id,sample_name,Condition,TimePoint,Replicate,illumina_r1,illumina_r2,Genome PTR,Ori/Ter PTR,OD600, Notes,CFU/ml,Sample ID,qPCR_PTR,TimePoint(Hrs),dlog(CFUml) /dt,log10 CFU/ml,dlog(CFUml) /dt log
+GC_HU-HM86_3h,HM86,GC_HU,3h,a,GC_HU-HM86_3h_R1.fastq.gz,GC_HU-HM86_3h_R2.fastq.gz,1.266543,1.785376,ND,HU-Stability,8.45E+08,8399-SP-78,1.338288,3,9.57E-01,8.926856709,4.55E-02
+GC_HU-HM86_4h,HM86,GC_HU,4h,a,GC_HU-HM86_4h_R1.fastq.gz,GC_HU-HM86_4h_R2.fastq.gz,1.10074,1.360072,ND,HU-Stability,2.20E+09,8399-SP-79,1.068144,4,-6.06E-01,9.342422681,-2.86E-02
+GC_HU-HM86_5h,HM86,GC_HU,5h,a,GC_HU-HM86_5h_R1.fastq.gz,GC_HU-HM86_5h_R2.fastq.gz,1.090105,1.247135,ND,HU-Stability,1.20E+09,8399-SP-80,0.993331,5,1.54E-01,9.079181246,7.35E-03
+GC_HU-HM86_6h,HM86,GC_HU,6h,a,GC_HU-HM86_6h_R1.fastq.gz,GC_HU-HM86_6h_R2.fastq.gz,1.079097,1.335492,ND,HU-Stability,1.40E+09,8399-SP-81,0.972966,6,,9.146128036,

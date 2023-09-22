@@ -1,0 +1,165 @@
+# Author: Ali Pirani
+configfile: "config/config.yaml"
+
+import pandas as pd
+import os
+
+samples_df = pd.read_csv(config["samples"])
+CONDITION = list(samples_df['Condition'])
+SAMPLE = list(samples_df['sample_id'])
+
+PREFIX = config["prefix"]
+
+SHORTREADS = list(samples_df['sample_id'])
+
+samples_df['combination_1'] = samples_df[['Condition', 'sample_id', 'sample_id']].agg('/'.join, axis=1)
+COMBINATION_1 = list(samples_df['combination_1'])
+
+if not os.path.exists("results/" + PREFIX):
+    os.system("mkdir %s" % "results/" + PREFIX)
+
+rule all:
+    input:
+        # Uncomment the rules for debugging
+        #trim=expand("results/{prefix}/trimmomatic/{condition}/{sample}/{sample}_R1_paired.fastq.gz", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        #samout = expand("results/{prefix}/bowtie/{condition}/{sample}/{sample}.sam", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        #bamout_sorted = expand("results/{prefix}/bowtie/{condition}/{sample}/{sample}_sorted.bam", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        #picard_bamout_sorted = expand("results/{prefix}/picard/{condition}/{sample}/{sample}_sorted.bam", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        #bedfile = expand("results/{prefix}/bedtools/{condition}/{sample}/{sample}.bed", sample=SAMPLE, prefix=PREFIX, condition=CONDITION),
+        btindex = config["reference_path"] + f".1.bt2",
+        coverage_perc_bin = expand("results/{prefix}/ptr/{combination}.bed_perc_bins.csv", prefix=PREFIX, condition=CONDITION, sample=SAMPLE, combination=COMBINATION_1),
+        ptr_loci = expand("results/{prefix}/ptr/{combination}_PTR_loci.txt", prefix=PREFIX, condition=CONDITION, sample=SAMPLE, combination=COMBINATION_1),
+
+rule trimmomatic_pe:
+    input:
+        r1 = lambda wildcards: expand(str(config["short_reads"] + "/" + f"{wildcards.sample}_R1.fastq.gz")),
+        r2 = lambda wildcards: expand(str(config["short_reads"] + "/" + f"{wildcards.sample}_R1.fastq.gz")),
+        
+    output:
+        r1 = f"results/{{prefix}}/trimmomatic/{{condition}}/{{sample}}/{{sample}}_R1_paired.fastq.gz",
+        r2 = f"results/{{prefix}}/trimmomatic/{{condition}}/{{sample}}/{{sample}}_R2_paired.fastq.gz", 
+        # reads where trimming entirely removed the mate
+        r1_unpaired = f"results/{{prefix}}/trimmomatic/{{condition}}/{{sample}}/{{sample}}_R1_unpaired.fastq.gz",
+        r2_unpaired = f"results/{{prefix}}/trimmomatic/{{condition}}/{{sample}}/{{sample}}_R2_unpaired.fastq.gz",
+    params:
+        adapter_filepath=config["adapter_file"],
+        seed=config["seed_mismatches"],
+        palindrome_clip=config["palindrome_clipthreshold"],
+        simple_clip=config["simple_clipthreshold"],
+        minadapterlength=config["minadapterlength"],
+        keep_both_reads=config["keep_both_reads"],
+        window_size=config["window_size"],
+        window_size_quality=config["window_size_quality"],
+        minlength=config["minlength"],
+        headcrop_length=config["headcrop_length"],
+        threads = config["ncores"],
+    log:
+        "logs/{prefix}/trimmomatic/{{condition}}/{{sample}}/{sample}.log"
+    conda:
+        "envs/trimmomatic.yaml"
+    shell:
+        "trimmomatic PE {input.r1} {input.r2} {output.r1} {output.r1_unpaired} {output.r2} {output.r2_unpaired} -threads {params.threads} ILLUMINACLIP:{params.adapter_filepath}:{params.seed}:{params.palindrome_clip}:{params.simple_clip}:{params.minadapterlength}:{params.keep_both_reads} SLIDINGWINDOW:{params.window_size}:{params.window_size_quality} MINLEN:{params.minlength} HEADCROP:{params.headcrop_length} &>{log}"
+
+rule bowtie_index:
+    input:
+        reference = config["reference_path"],
+    output:
+        btindex = config["reference_path"] + f".1.bt2",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/bowtie.yaml"
+    shell:
+        "bowtie2-build {input.reference} {input.reference}"
+
+rule bowtie:
+    input:
+        r1 = lambda wildcards: expand(f"results/{wildcards.prefix}/trimmomatic/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_R1_paired.fastq.gz"),
+        r2 = lambda wildcards: expand(f"results/{wildcards.prefix}/trimmomatic/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_R2_paired.fastq.gz"),
+        reference = config["reference_path"] + f".1.bt2",
+    output:
+        samout = f"results/{{prefix}}/bowtie/{{condition}}/{{sample}}/{{sample}}.sam",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+        alignment_settings = config["bowtie2_alignment_settings"],
+    conda:
+        "envs/bowtie.yaml"
+    shell:
+        # bowtie2-build {params.reference} {params.reference} && 
+        "bowtie2 -x {params.reference} -1 {input.r1} -2 {input.r2} -S {output.samout} -t -p 8 {params.alignment_settings}"
+
+rule samtools:
+    input:
+        samout = lambda wildcards: expand(f"results/{wildcards.prefix}/bowtie/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}.sam"),
+    output:
+        bamout = f"results/{{prefix}}/bowtie/{{condition}}/{{sample}}/{{sample}}.bam",
+        bamout_sorted = f"results/{{prefix}}/bowtie/{{condition}}/{{sample}}/{{sample}}_sorted.bam",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/samtools.yaml"
+    shell:
+        "samtools view -Sb {input.samout} > {output.bamout} && samtools sort -o {output.bamout_sorted} {output.bamout} && samtools index {output.bamout_sorted}"
+
+rule picard:
+    input:
+        bamout_sorted = lambda wildcards: expand(f"results/{wildcards.prefix}/bowtie/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_sorted.bam"),
+    output:
+        picard_bamout = f"results/{{prefix}}/picard/{{condition}}/{{sample}}/{{sample}}.bam",
+        picard_bamout_sorted = f"results/{{prefix}}/picard/{{condition}}/{{sample}}/{{sample}}_sorted.bam",
+        picard_metrics = f"results/{{prefix}}/picard/{{condition}}/{{sample}}/{{sample}}_Metrics",
+        samtools_stats = f"results/{{prefix}}/picard/{{condition}}/{{sample}}/{{sample}}_alignment_stats",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/picard.yaml"
+    shell:
+        "picard MarkDuplicates REMOVE_DUPLICATES=true I={input.bamout_sorted} O={output.picard_bamout} CREATE_INDEX=true VALIDATION_STRINGENCY=LENIENT METRICS_FILE={output.picard_metrics} && samtools sort -o {output.picard_bamout_sorted} {output.picard_bamout} && samtools index {output.picard_bamout_sorted} && samtools flagstat {output.picard_bamout_sorted} > {output.samtools_stats}"
+
+rule bedtools:
+    input:
+        picard_bamout_sorted = lambda wildcards: expand(f"results/{wildcards.prefix}/picard/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}_sorted.bam"),
+    output:
+        bedfile = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}.bed",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/bedtools.yaml"
+    shell:
+        "bedtools genomecov -ibam {input.picard_bamout_sorted} -d > {output.bedfile}"
+
+rule Estimate_PTR:
+    input:
+        bedfile = lambda wildcards: expand(f"results/{wildcards.prefix}/ptr/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}.bed"),
+    output:
+        coverage_bin = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}_bins.csv",
+        coverage_perc_bin = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}.bed_perc_bins.csv",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+    conda:
+        "envs/ptr.yaml"
+    shell:
+        "python workflow/bin/ptr.py -bedfile {input.bedfile} -outfile {output.coverage_perc_bin}"
+
+
+rule Estimate_PTR_loci:
+    input:
+        bedfile = lambda wildcards: expand(f"results/{wildcards.prefix}/ptr/{wildcards.condition}/{wildcards.sample}/" + f"{wildcards.sample}.bed"),
+    output:
+        ptr_loci = f"results/{{prefix}}/ptr/{{condition}}/{{sample}}/{{sample}}_PTR_loci.txt",
+    params:
+        threads = config["ncores"],
+        reference = config["reference_path"],
+        OriC_coordinates = config["OriC_coordinates"],
+        ter_coordinates = config["ter_coordinates"],
+
+    conda:
+        "envs/ptr.yaml"
+    shell:
+        "python workflow/bin/ptr_loci.py -bedfile {input.bedfile} -outfile {output.ptr_loci} -OriC_coordinates \"{params.OriC_coordinates}\" -ter_coordinates \"{params.ter_coordinates}\""

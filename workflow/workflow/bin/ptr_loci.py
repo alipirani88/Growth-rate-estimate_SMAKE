@@ -36,10 +36,7 @@ def generate_PTR_dataframe(bedfile, outfile, OriC_coordinates, ter_coordinates):
     OriC_mean_depth =  statistics.mean(read_counts[(int(OriC_coordinates.split(',')[0]) - 1):(int(OriC_coordinates.split(',')[1]) - 1)])
     ter_mean_depth = statistics.mean(read_counts[(int(ter_coordinates.split(',')[0]) - 1):(int(ter_coordinates.split(',')[1]) - 1)])
 
-    if OriC_mean_depth > ter_mean_depth:
-        PTR_loci = OriC_mean_depth / ter_mean_depth
-    else:
-        PTR_loci = ter_mean_depth / OriC_mean_depth
+    PTR_loci =  OriC_mean_depth / ter_mean_depth
 
     with open(outfile, 'w+') as out:
         out.write(str(bedfile.replace('.bed', ''))+' OriC_mean_depth :\t' + str(OriC_mean_depth) + '\n')

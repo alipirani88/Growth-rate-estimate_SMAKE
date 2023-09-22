@@ -1,0 +1,11 @@
+#!/bin/sh
+#SBATCH --job-name=Growth-rate-estimate_SMAKE_HM68
+#SBATCH --mail-user=apirani@med.umich.edu
+#SBATCH --mail-type=BEGIN,END,NONE,FAIL,REQUEUE
+#SBATCH --export=ALL
+#SBATCH --partition=standard
+#SBATCH --account=esnitkin99
+#SBATCH --nodes=1 --ntasks=1 --cpus-per-task=2 --mem=10g --time=125:00:00
+
+cd /nfs/turbo/umms-esnitkin/Project_UTI_PTR/Analysis/2023-06-23_Growth_Rate_Analysis/Growth-rate-estimate_SMAKE
+snakemake -j 999 --cluster-config config/cluster.json --cluster "sbatch -A {cluster.account} -p {cluster.partition} -N {cluster.nodes}  -t {cluster.walltime} -c {cluster.procs} --mem-per-cpu {cluster.pmem}" --use-conda --conda-frontend conda

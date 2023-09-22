@@ -1,0 +1,7 @@
+sample_id,sample_name,Condition,TimePoint,Replicate,illumina_r1,illumina_r2,Genome PTR,Ori/Ter PTR,OD600, Notes,CFU/ml,Sample ID,qPCR_PTR,TimePoint(Hrs),dlog(CFUml) /dt,log10 CFU/ml,dlog(CFUml) /dt log
+Stab_HM86_Tb_O-N,HM86,Stab-TB,0,a,Stab_HM86_Tb_O-N_R1.fastq.gz,Stab_HM86_Tb_O-N_R2.fastq.gz,1.119417,1.290371,ND,TB_stability,6.48E+07,8399-SP-61,1.000095,0,1.54E+00,7.811798329,7.88E-02
+Stab_HM86_TB2h,HM86,Stab-TB,2h,a,Stab_HM86_TB2h_R1.fastq.gz,Stab_HM86_TB2h_R2.fastq.gz,1.462879,1.938786,ND,TB_stability,1.40E+09,8399-SP-62,1.876472,2,-4.99E-01,9.146128036,-2.40E-02
+Stab_HM86_TB3h,HM86,Stab-TB,3h,a,Stab_HM86_TB3h_R1.fastq.gz,Stab_HM86_TB3h_R2.fastq.gz,1.47515,1.655536,ND,TB_stability,8.50E+08,8399-SP-63,1.912839,3,3.02E-01,8.929418926,1.46E-02
+Stab_HM86_TB4h,HM86,Stab-TB,4h,a,Stab_HM86_TB4h_R1.fastq.gz,Stab_HM86_TB4h_R2.fastq.gz,1.464561,1.979151,ND,TB_stability,1.15E+09,8399-SP-64,2.016897,4,-1.91E-01,9.06069784,-9.20E-03
+Stab_HM86_TB5h,HM86,Stab-TB,5h,a,Stab_HM86_TB5h_R1.fastq.gz,Stab_HM86_TB5h_R2.fastq.gz,1.473698,1.961352,ND,TB_stability,9.50E+08,8399-SP-65,1.690796,5,5.13E-02,8.977723605,2.48E-03
+Stab_HM86_TB6h,HM86,Stab-TB,6h,a,Stab_HM86_TB6h_R1.fastq.gz,Stab_HM86_TB6h_R2.fastq.gz,1.480584,1.74193,ND,TB_stability,1.00E+09,8399-SP-66,1.93609,6,,9,
